@@ -18,11 +18,12 @@ public class Album {
 
         JsonPath response = given()
                 .contentType("application/json")
+                .pathParam("id", "0CZUbYCniBFqvgfTiaWPoz")
                 .expect()
                 .statusCode(200)
 
                 .when()
-                .get("/albums/0CZUbYCniBFqvgfTiaWPoz").jsonPath();
+                .get("/albums/{id}").jsonPath();
 
         String winnerIds = response.getString("artists.name");
         System.out.println(winnerIds);
