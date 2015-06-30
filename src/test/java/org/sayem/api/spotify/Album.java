@@ -1,21 +1,20 @@
-package org.sayem.api;
+package org.sayem.api.spotify;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
 
 /**
  * Created by syed.sayem on 6/29/15.
  */
-public class Udacity {
+public class Album {
 
     @Test
-    public void getCourses(){
-        RestAssured.baseURI = "https://www.udacity.com/public-api/v0";
+    public void getAlbum(){
+
+        RestAssured.baseURI = "https://api.spotify.com/v1";
 
         JsonPath response = given()
                 .contentType("application/json")
@@ -23,11 +22,10 @@ public class Udacity {
                 .statusCode(200)
 
                 .when()
-                .get("/courses").jsonPath();
+                .get("/albums/0CZUbYCniBFqvgfTiaWPoz").jsonPath();
 
-        List<String> winnerIds = response.get("courses.project_name");
-        winnerIds.parallelStream()
-                .filter(s -> s.contains("Android"))
-                .forEach(System.out::println);
+        String winnerIds = response.getString("artists.name");
+        System.out.println(winnerIds);
+
     }
 }

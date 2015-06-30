@@ -1,6 +1,7 @@
-package org.sayem.api;
+package org.sayem.api.json.placeholder;
 
 import com.jayway.restassured.path.json.JsonPath;
+import org.sayem.api.*;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
